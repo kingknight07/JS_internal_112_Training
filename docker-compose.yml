@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    container_name: js-training-dev
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "3000:3000"
+      - "5173:5173"
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+    networks:
+      - training-network
+
+networks:
+  training-network:
+    driver: bridge
