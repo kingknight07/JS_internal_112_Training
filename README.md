@@ -2,7 +2,7 @@
 
 ## What I learned today:
 
-### 🎯 Core Concepts Covered
+### Core Concepts Covered
 
 #### 1. GitHub Repository Management
 - ✅ How to create a GitHub repository
@@ -31,7 +31,7 @@
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 HCL/
@@ -44,7 +44,7 @@ HCL/
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Running the Programs
 
@@ -60,7 +60,7 @@ node day1/setup.js
 
 ---
 
-## 📝 Assignment Tasks Completed
+## Assignment Tasks Completed
 
 - [x] **Task 1**: Created GitHub repository
   - Repository Name: `JS_internal_112_Training`
@@ -87,7 +87,7 @@ node day1/setup.js
 
 ---
 
-## 💡 Key Learnings
+## Key Learnings
 
 ### Git Commands Used
 ```bash
@@ -119,7 +119,7 @@ console.log("Name:", name, "Age:", 20);
 
 ---
 
-## 🔧 Development Environment
+## Development Environment
 
 - **IDE**: Visual Studio Code
 - **Runtime**: Node.js
@@ -128,16 +128,16 @@ console.log("Name:", name, "Age:", 20);
 
 ---
 
-## 📊 Progress Tracking
+## Progress Tracking
 
 | Day | Topic | Status |
 |-----|-------|--------|
-| Day 1 | JavaScript Basics & GitHub | ✅ Completed |
-| Day 2 | Coming Soon | ⏳ Pending |
+| Day 1 | JavaScript Basics & GitHub | Completed |
+| Day 2 | Coming Soon | Pending |
 
 ---
 
-## 🎓 Skills Acquired
+## Skills Acquired
 
 1. **Version Control**
    - Git basics
@@ -161,7 +161,7 @@ console.log("Name:", name, "Age:", 20);
 
 ---
 
-## 📸 Submission Requirements
+## Submission Requirements
 
 ### Required Screenshots:
 1. ✅ Output of `intro.js` program
@@ -176,7 +176,7 @@ console.log("Name:", name, "Age:", 20);
 
 ---
 
-## 🔗 Useful Links
+## Useful Links
 
 - [Repository on GitHub](https://github.com/kingknight07/JS_internal_112_Training)
 - [Node.js Official Site](https://nodejs.org)
@@ -186,14 +186,14 @@ console.log("Name:", name, "Age:", 20);
 
 ---
 
-## 📖 Additional Notes
+## Additional Notes
 
 For detailed study notes and comprehensive documentation of all topics covered in Day 1, please refer to:
 - **[day1/README.md](day1/README.md)** - Complete study guide with examples
 
 ---
 
-## 🎯 Next Steps
+## Next Steps
 
 ### Upcoming Topics for Day 2:
 - Variables and Data Types
@@ -204,7 +204,7 @@ For detailed study notes and comprehensive documentation of all topics covered i
 
 ---
 
-## ✨ Author Information
+## Author Information
 
 **Name**: Ayush Shukla  
 **GitHub**: [@kingknight07](https://github.com/kingknight07)  
@@ -213,12 +213,12 @@ For detailed study notes and comprehensive documentation of all topics covered i
 
 ---
 
-## 📜 License
+## License
 
 This project is for educational purposes as part of HCL internal training.
 
 ---
 
-**Happy Coding! 🚀💻**
+**Happy Coding!**
 
 > *"First, solve the problem. Then, write the code."* - John Johnson

@@ -1,6 +1,6 @@
 # Day 1 - JavaScript & GitHub Fundamentals
 
-## 📚 Comprehensive Study Notes for Future Reference
+## Comprehensive Study Notes for Future Reference
 
 ---
 
@@ -808,4 +808,4 @@ Add your personal notes, observations, and learnings here:
 
 ---
 
-**Happy Learning! Keep Coding! 🚀💻✨**
+**Happy Learning! Keep Coding!**
