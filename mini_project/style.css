@@ -1,0 +1,726 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rajdhani', sans-serif;
+    background: #0a0a0f;
+    min-height: 100vh;
+    padding: 40px 20px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Character Images */
+.character {
+    position: fixed;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.character img {
+    width: 280px;
+    height: auto;
+    filter: drop-shadow(0 0 30px rgba(0, 255, 255, 0.5));
+    animation: float 4s ease-in-out infinite;
+}
+
+.character-left {
+    left: 20px;
+    bottom: 20px;
+}
+
+.character-left img {
+    filter: drop-shadow(0 0 30px rgba(0, 255, 100, 0.6));
+}
+
+.character-right {
+    right: 20px;
+    bottom: 20px;
+}
+
+.character-right img {
+    filter: drop-shadow(0 0 30px rgba(255, 50, 50, 0.6));
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Hide characters on mobile */
+@media (max-width: 1200px) {
+    .character {
+        display: none;
+    }
+}
+
+/* Animated star field background */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+}
+
+/* Grid overlay */
+.grid-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Scanning line effect */
+.scan-line {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #00ffff, transparent);
+    box-shadow: 0 0 20px #00ffff;
+    z-index: 2;
+    animation: scan 3s linear infinite;
+    opacity: 0.5;
+}
+
+@keyframes scan {
+    0% {
+        top: 0;
+    }
+
+    100% {
+        top: 100vh;
+    }
+}
+
+.container {
+    position: relative;
+    z-index: 10;
+    max-width: 520px;
+    margin: 0 auto;
+    background: rgba(10, 10, 20, 0.9);
+    padding: 40px;
+    border-radius: 5px;
+    border: 1px solid #00ffff;
+    box-shadow:
+        0 0 20px rgba(0, 255, 255, 0.3),
+        inset 0 0 60px rgba(0, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+/* Corner decorations */
+.container::before,
+.container::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #00ffff;
+}
+
+.container::before {
+    top: -5px;
+    left: -5px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.container::after {
+    bottom: -5px;
+    right: -5px;
+    border-left: none;
+    border-top: none;
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    color: #00ffff;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow:
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 40px #00ffff;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+    }
+
+    to {
+        text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
+    }
+}
+
+.form-group {
+    margin-bottom: 22px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #00ffff;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+input[type="text"],
+input[type="email"],
+select {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid #00ffff50;
+    border-radius: 3px;
+    font-size: 15px;
+    font-family: 'Rajdhani', sans-serif;
+    transition: all 0.3s ease;
+    background: rgba(0, 255, 255, 0.05);
+    color: #fff;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder {
+    color: #00ffff50;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus {
+    outline: none;
+    border-color: #00ffff;
+    background: rgba(0, 255, 255, 0.1);
+    box-shadow:
+        0 0 15px rgba(0, 255, 255, 0.3),
+        inset 0 0 15px rgba(0, 255, 255, 0.1);
+}
+
+select option {
+    background: #0a0a0f;
+    color: #fff;
+}
+
+.radio-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 8px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 10px 16px;
+    border: 1px solid #00ffff30;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.radio-group label:hover {
+    border-color: #00ffff;
+    background: rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.radio-group label:has(input:checked) {
+    border-color: #ff00ff;
+    background: rgba(255, 0, 255, 0.1);
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+    color: #ff00ff;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 12px;
+    border: 1px solid #00ffff30;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    color: #00ffff;
+}
+
+.checkbox-label:hover {
+    border-color: #00ffff;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.error {
+    color: #ff3366;
+    font-size: 12px;
+    margin-top: 6px;
+    display: block;
+    font-weight: 600;
+    text-shadow: 0 0 10px #ff3366;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: transparent;
+    color: #00ffff;
+    border: 2px solid #00ffff;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.4), transparent);
+    transition: left 0.5s ease;
+}
+
+.submit-btn:hover {
+    background: rgba(0, 255, 255, 0.1);
+    box-shadow:
+        0 0 30px rgba(0, 255, 255, 0.5),
+        inset 0 0 30px rgba(0, 255, 255, 0.1);
+    text-shadow: 0 0 20px #00ffff;
+}
+
+.submit-btn:hover::before {
+    left: 100%;
+}
+
+/* Output Section */
+#output {
+    margin-top: 30px;
+    padding: 25px;
+    background: rgba(0, 255, 255, 0.05);
+    border-radius: 5px;
+    border: 1px solid #00ffff30;
+}
+
+#output.hide {
+    display: none;
+}
+
+.encrypting-text {
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ff00ff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px #ff00ff;
+    animation: glitch 0.3s infinite;
+}
+
+@keyframes glitch {
+
+    0%,
+    100% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(2px, -2px);
+    }
+
+    60% {
+        transform: translate(-2px, -2px);
+    }
+
+    80% {
+        transform: translate(2px, 2px);
+    }
+}
+
+.encrypt-value {
+    font-family: 'Courier New', monospace;
+    color: #ff3366;
+    letter-spacing: 2px;
+    transition: all 0.3s;
+    text-shadow: 0 0 10px #ff3366;
+}
+
+.encrypt-value.decrypted {
+    color: #00ff88;
+    text-shadow: 0 0 10px #00ff88;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: #1a1a2e;
+    border-radius: 2px;
+    margin-top: 20px;
+    overflow: hidden;
+    border: 1px solid #00ffff30;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #00ffff, #ff00ff, #00ffff);
+    background-size: 200% 100%;
+    animation: shimmer 1s linear infinite;
+    border-radius: 2px;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.redirect-text {
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    margin-top: 15px;
+    color: #00ffff;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: blink 0.5s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0.3;
+    }
+}
+
+/* Success Page Styles */
+.success-message {
+    font-family: 'Orbitron', sans-serif;
+    color: #00ff88;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow:
+        0 0 10px #00ff88,
+        0 0 20px #00ff88,
+        0 0 40px #00ff88;
+}
+
+.success-icon {
+    font-size: 60px;
+    text-align: center;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 20px #00ff88);
+}
+
+.output-item {
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    background: rgba(0, 255, 255, 0.05);
+    border-radius: 3px;
+    border-left: 3px solid #00ffff;
+    border-right: 1px solid #00ffff20;
+    border-top: 1px solid #00ffff20;
+    border-bottom: 1px solid #00ffff20;
+    color: #fff;
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.output-item:last-child {
+    margin-bottom: 0;
+}
+
+.output-item strong {
+    color: #00ffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-right: 10px;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 28px;
+    background: transparent;
+    color: #00ffff;
+    text-decoration: none;
+    border: 2px solid #00ffff;
+    border-radius: 3px;
+    font-weight: 700;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.back-btn:hover {
+    background: rgba(0, 255, 255, 0.1);
+    box-shadow:
+        0 0 30px rgba(0, 255, 255, 0.5),
+        inset 0 0 30px rgba(0, 255, 255, 0.1);
+    text-shadow: 0 0 20px #00ffff;
+}
+
+/* Hexagon decorations */
+.hex-bg {
+    position: fixed;
+    bottom: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 0, 255, 0.1) 0%, transparent 70%);
+    z-index: 0;
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+/* Data stream effect */
+.data-stream {
+    position: fixed;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, #00ffff, transparent);
+    opacity: 0.3;
+    z-index: 1;
+}
+
+/* Loading ring for success page */
+.loading-ring {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    border: 2px solid transparent;
+    border-top: 2px solid #00ffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 5;
+    opacity: 0;
+}
+
+@keyframes spin {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* ============================================
+   DR. DOOM HACKING PROTOCOL STYLES
+   ============================================ */
+
+#hackingInterface {
+    text-align: center;
+}
+
+.doom-header {
+    margin-bottom: 25px;
+}
+
+.doom-status {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    color: #00ff00;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px #00ff00;
+    animation: glitch 0.3s infinite;
+}
+
+.doom-skull {
+    font-size: 80px;
+    margin: 20px 0;
+    filter: drop-shadow(0 0 30px #00ff00);
+}
+
+.hack-terminal {
+    background: rgba(0, 50, 0, 0.5);
+    border: 1px solid #00ff00;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 25px;
+    text-align: left;
+    font-family: 'Courier New', monospace;
+}
+
+.terminal-line {
+    color: #00ff00;
+    font-size: 14px;
+    margin: 8px 0;
+    opacity: 0;
+    text-shadow: 0 0 5px #00ff00;
+}
+
+.terminal-line:first-child {
+    opacity: 1;
+}
+
+.data-extraction {
+    background: rgba(0, 50, 0, 0.3);
+    border: 1px solid #00ff00;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 25px;
+    opacity: 0;
+}
+
+.extract-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    color: #00ff00;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px #00ff00;
+}
+
+.data-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    margin: 8px 0;
+    background: rgba(0, 255, 0, 0.05);
+    border-left: 3px solid #00ff00;
+    border-radius: 3px;
+}
+
+.data-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    color: #00ff00;
+    letter-spacing: 1px;
+}
+
+.data-value {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: #ff3366;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px #ff3366;
+}
+
+.doom-progress {
+    margin: 25px 0;
+}
+
+.progress-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    color: #00ff00;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.progress-percent {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 24px;
+    color: #00ff00;
+    margin-top: 10px;
+    text-shadow: 0 0 20px #00ff00;
+}
+
+.doom-footer {
+    margin-top: 20px;
+}
+
+.blink-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    color: #00ff00;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    animation: blink 0.5s infinite;
+    text-shadow: 0 0 15px #00ff00;
+}

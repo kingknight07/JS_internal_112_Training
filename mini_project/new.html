@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✅ UPLOAD COMPLETE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Star Field Background -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Grid Overlay -->
+    <div class="grid-overlay"></div>
+
+    <!-- Scanning Line -->
+    <div class="scan-line"></div>
+
+    <!-- Data Streams -->
+    <div class="data-stream" style="left: 10%;"></div>
+    <div class="data-stream" style="left: 30%;"></div>
+    <div class="data-stream" style="left: 70%;"></div>
+    <div class="data-stream" style="left: 90%;"></div>
+
+    <!-- Hex Background -->
+    <div class="hex-bg"></div>
+
+    <!-- Iron Man Character -->
+    <div class="character character-right">
+        <img src="iron_man.png" alt="Iron Man" id="ironMan">
+    </div>
+
+    <!-- Loading Ring -->
+    <div class="loading-ring" id="loadingRing"></div>
+
+    <div class="container" id="mainContainer" style="opacity: 0;">
+        <div class="success-icon">🛸</div>
+        <div class="success-message">◈ UPLOAD SUCCESSFUL ◈</div>
+
+        <div id="output">
+            <div class="output-item"><strong>◈ OPERATIVE:</strong> <span id="displayName"></span></div>
+            <div class="output-item"><strong>◈ COMM LINK:</strong> <span id="displayEmail"></span></div>
+            <div class="output-item"><strong>◈ CLASS:</strong> <span id="displayGender"></span></div>
+            <div class="output-item"><strong>◈ PROGRAM:</strong> <span id="displayCourse"></span></div>
+        </div>
+
+        <a href="frontend.html" class="back-btn">◀ RETURN TO PORTAL</a>
+    </div>
+
+    <!-- Anime.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script>
+        // Get data from URL parameters
+        const params = new URLSearchParams(window.location.search);
+
+        document.getElementById('displayName').textContent = params.get('name') || 'N/A';
+        document.getElementById('displayEmail').textContent = params.get('email') || 'N/A';
+        document.getElementById('displayGender').textContent = params.get('gender') || 'N/A';
+        document.getElementById('displayCourse').textContent = params.get('course') || 'N/A';
+
+        // Create star field
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            starsContainer.appendChild(star);
+        }
+
+        // Animate stars
+        anime({
+            targets: '.star',
+            opacity: [0.2, 1, 0.2],
+            scale: [0.5, 1.5, 0.5],
+            duration: function () { return anime.random(2000, 5000); },
+            delay: function () { return anime.random(0, 3000); },
+            loop: true,
+            easing: 'easeInOutSine'
+        });
+
+        // Animate data streams
+        anime({
+            targets: '.data-stream',
+            opacity: [0, 0.5, 0],
+            translateY: [-100, window.innerHeight + 100],
+            duration: function () { return anime.random(3000, 6000); },
+            delay: function () { return anime.random(0, 2000); },
+            loop: true,
+            easing: 'linear'
+        });
+
+        // Loading ring animation
+        const ring = document.getElementById('loadingRing');
+        ring.style.opacity = '1';
+
+        anime({
+            targets: '#loadingRing',
+            scale: [0.5, 1.5],
+            opacity: [1, 0],
+            duration: 1500,
+            easing: 'easeOutExpo',
+            complete: function () {
+                ring.style.display = 'none';
+            }
+        });
+
+        // Container entrance after loading
+        setTimeout(() => {
+            anime({
+                targets: '#mainContainer',
+                opacity: [0, 1],
+                scale: [0.8, 1],
+                duration: 800,
+                easing: 'easeOutBack'
+            });
+        }, 800);
+
+        // Success icon animation
+        anime({
+            targets: '.success-icon',
+            scale: [0, 1.2, 1],
+            rotate: [0, 360],
+            duration: 1200,
+            delay: 1000,
+            easing: 'easeOutElastic(1, 0.5)'
+        });
+
+        // Success message typewriter effect
+        const successMsg = document.querySelector('.success-message');
+        const originalText = successMsg.textContent;
+        successMsg.textContent = '';
+
+        setTimeout(() => {
+            let i = 0;
+            const typewriter = setInterval(() => {
+                successMsg.textContent += originalText[i];
+                i++;
+                if (i >= originalText.length) {
+                    clearInterval(typewriter);
+                }
+            }, 50);
+        }, 1200);
+
+        // Animate output items with holographic effect
+        anime({
+            targets: '.output-item',
+            opacity: [0, 1],
+            translateX: [-50, 0],
+            delay: anime.stagger(200, { start: 1800 }),
+            duration: 600,
+            easing: 'easeOutQuad'
+        });
+
+        // Back button animation
+        anime({
+            targets: '.back-btn',
+            opacity: [0, 1],
+            translateY: [30, 0],
+            delay: 2800,
+            duration: 600,
+            easing: 'easeOutQuad'
+        });
+
+        // Add glitch effect to items
+        setInterval(() => {
+            const items = document.querySelectorAll('.output-item');
+            const randomItem = items[Math.floor(Math.random() * items.length)];
+            if (randomItem) {
+                randomItem.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
+                randomItem.style.opacity = '0.8';
+                setTimeout(() => {
+                    randomItem.style.transform = 'translate(0, 0)';
+                    randomItem.style.opacity = '1';
+                }, 100);
+            }
+        }, 2000);
+
+        // Iron Man flying entrance
+        anime({
+            targets: '#ironMan',
+            translateX: [300, 0],
+            translateY: [-200, 0],
+            rotate: [-15, 0],
+            opacity: [0, 1],
+            duration: 1500,
+            delay: 1500,
+            easing: 'easeOutExpo'
+        });
+    </script>
+</body>
+
+</html>
